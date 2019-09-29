@@ -1,0 +1,69 @@
+---
+# description: php 7 versions to deploy
+#              default = distro version, constants defined in vars/
+#              on Debian define this to include extra/other versions from Sury
+# choices: ["7.0", "7.1", "7.2", "7.3"]
+# type: list
+# php7_versions: []
+
+# description: php 7 packages to install
+#              only the part after the dash for:
+#              "php{{ php7_version }}-{{ item }}"
+# type: list
+php7_default_pkgs:
+  - fpm
+  - common
+  - cli
+  - curl
+  - dev
+  - gd
+  - mysql
+  - mbstring
+  - intl
+  - json
+  - soap
+  - xml
+  - xmlrpc
+  - zip
+
+####################
+# PHP.INI defaults #
+####################
+
+# description: extra php 7 packages to deploy
+#              only the part after the dash for:
+#              "php{{ php7_version }}-{{ item }}"
+# type: list
+php7_extra_pkg: []
+
+# description: php maximum execution time in seconds
+# type: int
+php7_max_execution_time: 60
+
+# description: php maximum input time in seconds
+# type: int
+php7_max_input_time: 60
+
+# description: php maximum input vars
+# type: int
+php7_max_input_vars: 5000
+
+# description: php memory limit
+# type: string
+php7_memory_limit: 192M
+
+# description: php maximum post size
+# type: string
+php7_post_max_size: 33M
+
+# description: php maximum upload file size
+# type: string
+php7_upload_max_filesize: 32M
+
+# description: php maximum uploads in single request
+# type: int
+php7_max_file_uploads: 20
+
+# description: php timezone
+# type: string
+php7_date_timezone: "Europe/Brussels"

@@ -1,0 +1,40 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+scenario:
+  name: ubuntu
+lint:
+  name: yamllint
+platforms:
+  - name: php7-ubuntu-bionic
+    image: ubuntu:bionic
+    command: /lib/systemd/systemd
+    privileged: true
+  - name: php7-ubuntu-xenial
+    image: ubuntu:xenial
+    command: /lib/systemd/systemd
+    privileged: true
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks
+      jinja2_extensions: jinja2.ext.do
+      gather_timeout: 30
+      timeout: 30
+    ssh_connection:
+      pipelining: true
+  inventory:
+    host_vars:
+      php7-ubuntu-bionic:
+        php7_extra_pkg:
+          - php7.2-bcmath
+      php7-ubuntu-xenial:
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
