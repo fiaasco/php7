@@ -12,3 +12,13 @@
   loop: "{{ php7_versions }}"
   loop_control:
     loop_var: php7_version
+
+- name: enable proxy_fcgi
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - proxy
+    - proxy_fcgi
+  when: php7_apache2_enable_proxy_fcgi|bool
+  notify: restart apache2

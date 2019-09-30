@@ -67,3 +67,7 @@ php7_max_file_uploads: 20
 # description: php timezone
 # type: string
 php7_date_timezone: "Europe/Brussels"
+
+# description: enable mod proxy fastcgi in apache2?
+# type: bool
+php7_apache2_enable_proxy_fcgi: true
