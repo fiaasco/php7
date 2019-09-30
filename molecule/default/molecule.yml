@@ -29,6 +29,7 @@ provisioner:
   inventory:
     host_vars:
       php7-debian10:
+        php7_apache2_enable_proxy_fcgi: false
         php7_extra_pkg:
           - php7.3-bcmath
       php7-debian9:

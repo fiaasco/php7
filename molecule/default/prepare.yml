@@ -1,0 +1,9 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  tasks:
+    - name: install prerequisites
+      package:
+        name: procps
+        state: installed
