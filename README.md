@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/fiaasco/php7.svg?branch=master)](https://travis-ci.com/fiaasco/php7)
+[![Build Status](https://travis-ci.org/fiaasco/php7.svg?branch=master)](https://travis-ci.org/fiaasco/php7)
 
 # Ansible Role: php7
 
