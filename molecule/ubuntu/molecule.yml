@@ -32,6 +32,7 @@ provisioner:
         php7_extra_pkg:
           - php7.2-bcmath
       php7-ubuntu-xenial:
+        php7_apache2_enable_proxy_fcgi: false
   lint:
     name: ansible-lint
 verifier:
