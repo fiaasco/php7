@@ -6,4 +6,4 @@
     - name: install prerequisites
       package:
         name: procps
-        state: installed
+        state: present

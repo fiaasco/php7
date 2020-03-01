@@ -35,7 +35,7 @@ provisioner:
       php7-debian9:
         php7_versions:
           - '7.0'
-          - '7.2'
+          # - '7.2'
   lint:
     name: ansible-lint
 verifier:
