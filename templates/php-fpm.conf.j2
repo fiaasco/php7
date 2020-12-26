@@ -75,15 +75,15 @@ process.max = 4
 {% elif ansible_memtotal_mb <= 2048 %}
 process.max = 10
 {% elif ansible_memtotal_mb <= 3072 %}
-process.max = 12
+process.max = 16
 {% elif ansible_memtotal_mb <= 4096 %}
-process.max = 14
+process.max = 18
 {% elif ansible_memtotal_mb <= 6144 %}
-process.max = 20
+process.max = 22
 {% elif ansible_memtotal_mb <= 8192 %}
-process.max = 24
+process.max = 25
 {% else %}
-process.max = 28
+process.max = 35
 {% endif %}
 
 ; Specify the nice(2) priority to apply to the master process (only if set)

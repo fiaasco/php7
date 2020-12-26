@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+# override default socket location which was hard coded in service
+[Unit]
+Description=The PHP {{ php7_version }} FastCGI Process Manager
+Documentation=man:php-fpm{{ php7_version }}(8)
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/php-fpm{{ php7_version }} --nodaemonize --fpm-config /etc/php/{{ php7_version }}/fpm/php-fpm.conf
+ExecStartPost=-/usr/lib/php/php-fpm-socket-helper install /run/php/php{{ php7_version }}-fpm.sock /etc/php/{{ php7_version }}/fpm/pool.d/www.conf {{ php7_version|replace('.', '') }}
+ExecStopPost=-/usr/lib/php/php-fpm-socket-helper remove /run/php/php{{ php7_version }}-fpm.sock /etc/php/{{ php7_version }}/fpm/pool.d/www.conf {{ php7_version|replace('.', '') }}
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

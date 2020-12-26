@@ -5,15 +5,18 @@ driver:
   name: docker
 scenario:
   name: ubuntu
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
   - name: php7-ubuntu-bionic
     image: ubuntu:bionic
     command: /lib/systemd/systemd
     privileged: true
-  - name: php7-ubuntu-xenial
-    image: ubuntu:xenial
+  - name: php7-ubuntu-focal
+    image: ubuntu:focal
     command: /lib/systemd/systemd
     privileged: true
 provisioner:
@@ -31,11 +34,7 @@ provisioner:
       php7-ubuntu-bionic:
         php7_extra_pkg:
           - php7.2-bcmath
-      php7-ubuntu-xenial:
+      php7-ubuntu-focal:
         php7_apache2_enable_proxy_fcgi: false
-  lint:
-    name: ansible-lint
 verifier:
   name: testinfra
-  lint:
-    name: flake8

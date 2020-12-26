@@ -55,6 +55,7 @@
     state: present
     cache_valid_time: 3600
     update_cache: yes
+  notify: restart php{{ php7_version }}
 
 - name: put php.ini | {{ php7_version }}
   template:
@@ -83,13 +84,20 @@
     mode: "0644"
   notify: restart php{{ php7_version }}
 
-- name: make sure libapache2-mod-php{{ php7_version }} is not present, use fpm!
-  apt:
-    name:
-      - "libapache2-mod-php{{ php7_version }}"
-      - libapache2-mod-php
-    state: absent
-  notify: restart apache2
+- name: override service definition for socket cleanup
+  template:
+    src: php-fpm.service.j2
+    dest: "/etc/systemd/system/php{{ php7_version }}-fpm.service"
+    owner: root
+    group: root
+    mode: "0644"
+  when: php7_version is version_compare('7.4', '>=')
+  notify:
+    - reload systemd
+    - restart php{{ php7_version }}
+
+- name: flush handlers to ensure daemon-reload
+  meta: flush_handlers
 
 - name: ensure service is running
   service:

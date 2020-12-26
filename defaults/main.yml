@@ -71,3 +71,8 @@ php7_date_timezone: "Europe/Brussels"
 # description: enable mod proxy fastcgi in apache2?
 # type: bool
 php7_apache2_enable_proxy_fcgi: true
+
+# description: default php version alternative to configure for php cli
+#              defaults to default installed version in distro release
+# type: string
+php7_default_cli_alternative: "{{ php7_distro_version }}"

@@ -5,5 +5,5 @@
   tasks:
     - name: install prerequisites
       package:
-        name: procps
+        name: procps,gpg
         state: present

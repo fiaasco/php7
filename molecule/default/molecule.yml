@@ -5,8 +5,11 @@ driver:
   name: docker
 scenario:
   name: default
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
   - name: php7-debian10
     image: debian:10
@@ -32,13 +35,13 @@ provisioner:
         php7_apache2_enable_proxy_fcgi: false
         php7_extra_pkg:
           - php7.3-bcmath
+        php7_versions:
+          - 7.0
+          - 7.3
+          - 7.4
       php7-debian9:
         php7_versions:
           - '7.0'
-          # - '7.2'
-  lint:
-    name: ansible-lint
+          - '7.2'
 verifier:
   name: testinfra
-  lint:
-    name: flake8

@@ -1,4 +1,8 @@
 ---
+- name: reload systemd
+  systemd:
+    daemon_reload: true
+
 - name: restart php7.0
   service:
     name: php7.0-fpm
@@ -44,6 +48,18 @@
 - name: reload php7.3
   service:
     name: php7.3-fpm
+    state: reloaded
+    enabled: yes
+
+- name: restart php7.4
+  service:
+    name: php7.4-fpm
+    state: restarted
+    enabled: yes
+
+- name: reload php7.4
+  service:
+    name: php7.4-fpm
     state: reloaded
     enabled: yes
 

@@ -3,11 +3,11 @@
 # Ansible Role: php7
 
 This is an Ansible role to install php7-fpm on Debian and Ubuntu.
-It will put the base configuration with the most important configurables and a standard pool. Apache mod php is removed by the role, as it requires the inefficient prefork mpm.
+It will put the base configuration with the most important configurables and a standard pool.
 
 Per default the role installs the distribution default php version. On Debian, it can also configure the Sury repo to install newer php7 versions than the default available. It's possible to run multiple PHP versions next to each other (example configuration in the default molecule scenario). Be aware that this will pull some dependencies and not every version combination might work.
 
-The role will remove mod-php when it's installed and enable mod proxy fcgi in Apache (set to false to disable php7\_apache2\_enable\_proxy\_fcgi).
+Use the fiaasco.apache2\_php\_config role to configure Apache for PHP FPM usage.
 
 Not included in the role:
 * Creation of other fpm pools
