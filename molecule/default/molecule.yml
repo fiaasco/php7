@@ -11,6 +11,10 @@ lint: |
   ansible-lint
   flake8
 platforms:
+  - name: php7-debian11
+    image: debian:11
+    command: /lib/systemd/systemd
+    privileged: true
   - name: php7-debian10
     image: debian:10
     command: /lib/systemd/systemd
@@ -31,6 +35,9 @@ provisioner:
       pipelining: true
   inventory:
     host_vars:
+      php7-debian11:
+        php7_extra_pkg:
+          - php7.4-bcmath
       php7-debian10:
         php7_apache2_enable_proxy_fcgi: false
         php7_extra_pkg:
