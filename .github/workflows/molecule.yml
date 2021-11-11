@@ -32,8 +32,6 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
-        with:
-          path: "${{ github.repository }}"
       - name: Molecule
         uses: gofrolist/molecule-action@v2
         with:
