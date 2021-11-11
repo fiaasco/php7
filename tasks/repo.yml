@@ -20,4 +20,4 @@
 - name: add Sury repo
   apt_repository:
     repo: "deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main"
-    update_cache: yes
+    update_cache: true

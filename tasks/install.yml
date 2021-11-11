@@ -18,7 +18,7 @@
     name: "{{ package_list }}"
     state: present
     cache_valid_time: 3600
-    update_cache: yes
+    update_cache: true
 
 - name: install php <=7.1 only packages
   apt:
@@ -26,7 +26,7 @@
       - php{{ php7_version }}-mcrypt
     state: present
     cache_valid_time: 3600
-    update_cache: yes
+    update_cache: true
   when: php7_version is version ("7.1", '<=')
 
 - name: install php <=7.2 only packages
@@ -35,7 +35,7 @@
       - php-uploadprogress
     state: present
     cache_valid_time: 3600
-    update_cache: yes
+    update_cache: true
   when: >
      php7_version is version ("7.2", '<=')
      and ansible_distribution_release != 'xenial'
@@ -47,14 +47,14 @@
       - php-imagick
     state: present
     cache_valid_time: 3600
-    update_cache: yes
+    update_cache: true
 
 - name: install extra required packages
   apt:
     name: "{{ php7_extra_pkg }}"
     state: present
     cache_valid_time: 3600
-    update_cache: yes
+    update_cache: true
   notify: restart php{{ php7_version }}
 
 - name: put php.ini | {{ php7_version }}
