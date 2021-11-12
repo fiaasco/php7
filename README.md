@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/fiaasco/php7.svg?branch=master)](https://travis-ci.org/fiaasco/php7)
-
 # Ansible Role: php7
+
+![Molecule tests](https://github.com/fiaasco/php7/actions/workflows/molecule.yml/badge.svg)
 
 This is an Ansible role to install php7-fpm on Debian and Ubuntu.
 It will put the base configuration with the most important configurables and a standard pool.
