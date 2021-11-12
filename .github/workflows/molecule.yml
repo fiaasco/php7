@@ -35,6 +35,7 @@ jobs:
         run: |
           cd php7
           molecule --debug test --scenario-name default
+          molecule --debug test --scenario-name ubuntu
 
         env:
           ANSIBLE_FORCE_COLOR: '1'
