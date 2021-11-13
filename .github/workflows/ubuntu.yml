@@ -1,5 +1,5 @@
 ---
-name: Molecule tests
+name: Ubuntu
 
 # yamllint disable-line rule:truthy
 on:
@@ -34,7 +34,6 @@ jobs:
       - name: Test with molecule
         run: |
           cd php7
-          molecule --debug test --scenario-name default
           molecule --debug test --scenario-name ubuntu
 
         env:
