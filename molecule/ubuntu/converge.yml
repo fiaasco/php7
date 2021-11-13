@@ -2,4 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: php7
+    - role: fiaasco.php7

@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  namespace: fiaasco
+  rolename: php7
   author: Luc Stroobant
   description: PHP 7 Ansible role
 

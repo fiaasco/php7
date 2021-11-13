@@ -3,7 +3,7 @@
 - name: Include distribution specific vars
   include_vars: "{{ ansible_distribution_release }}.yml"
 
-- name: set vars
+- name: set vars  # noqa var-naming
   set_fact:
     "{{ var }}": "{{ lookup('vars', '__' + var) }}"
   when: not lookup('vars', var, default=false)
