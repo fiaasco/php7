@@ -17,3 +17,4 @@
   alternatives:
     name: php
     path: "/usr/bin/php{{ php7_default_cli_alternative }}"
+  when: php7_default_cli_alternative != "7.99"

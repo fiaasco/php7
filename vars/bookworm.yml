@@ -1,0 +1,20 @@
+---
+php7_distro_version: "7.99"
+
+__php7_versions: []
+
+# dev packages install fails on debian 12 due to libssl changes
+php7_default_pkgs:
+  - fpm
+  - common
+  - cli
+  - curl
+  - gd
+  - mysql
+  - mbstring
+  - intl
+  - json
+  - soap
+  - xml
+  - xmlrpc
+  - zip
